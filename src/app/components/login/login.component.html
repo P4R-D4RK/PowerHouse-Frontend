@@ -1,0 +1,38 @@
+<div class="center pt-4">
+    <h1 mat-dialog-title>Inicar sesión</h1>
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill" class="mid-width">
+        <mat-label>Nombre</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="userFormControl.controls.email"
+        />
+        <span
+      *ngIf="userFormControl.controls.email.errors?.['email']"
+      class="sm"
+      >Ingresa un email válido</span
+    >
+      </mat-form-field>
+      <p></p>
+      <mat-form-field appearance="fill" class="mid-width">
+        <mat-label>Contraseña</mat-label>
+        <input
+          type="password"
+          matInput
+          [formControl]="userFormControl.controls.password"
+        />
+        <span
+      *ngIf="userFormControl.controls.password.errors?.['minlength']"
+      class="sm"
+      >Mínimo 7 carácteres</span
+    >
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <div class="half"></div>
+      <button mat-raised-button color="primary" (click)="login()" [disabled]="!userFormControl.valid">
+        Ingresar
+      </button>
+    </div>
+  </div>
